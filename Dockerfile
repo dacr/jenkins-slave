@@ -8,8 +8,7 @@ ENV SWARM_CLIENT_JAR     $JENKINS_HOME/swarm-client.jar
 ADD $SWARM_CLIENT_URL $SWARM_CLIENT_JAR
 ADD swarm-client.sh $JENKINS_HOME/
 
-RUN chown -R jenkins "$JENKINS_HOME"
-
+RUN chown -R jenkins:jenkins "$JENKINS_HOME"
 USER jenkins
 
 CMD $JENKINS_HOME/swarm-client.sh
