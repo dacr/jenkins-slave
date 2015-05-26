@@ -6,10 +6,10 @@ ENV SWARM_CLIENT_URL     $SWARM_CLIENT_BASEURL/1.24/swarm-client-1.24-jar-with-d
 ENV SWARM_CLIENT_JAR     $JENKINS_HOME/swarm-client.jar
 
 ADD $SWARM_CLIENT_URL $SWARM_CLIENT_JAR
-ADD swarm-client.sh $JENKINS_HOME/
+ADD swarm.sh $JENKINS_HOME/
 
 RUN chown -R jenkins:jenkins "$JENKINS_HOME"
 USER jenkins
 
-CMD $JENKINS_HOME/swarm-client.sh
+ENTRYPOINT [ "$JENKINS_HOME/swarm-bootssh.sh" ]
 
