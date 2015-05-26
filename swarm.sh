@@ -17,9 +17,9 @@ fi
 
 
 if [ -n "$MASTER_URL" ] ; then 
-  java -jar $SWARM_CLIENT_JAR -fsroot $JENKINS_HOME -name "$SLAVE_NAME" -master $MASTER_URL $*
+  java -jar $SWARM_CLIENT_JAR -fsroot $JENKINS_HOME -name "$SLAVE_NAME" -master $MASTER_URL "$@"
 else
-  java -jar $SWARM_CLIENT_JAR -fsroot $JENKINS_HOME -name "$SLAVE_NAME" $*
+  java -jar $SWARM_CLIENT_JAR -fsroot $JENKINS_HOME -name "$SLAVE_NAME" "$@"
 fi
 
 
