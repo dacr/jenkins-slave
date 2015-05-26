@@ -11,5 +11,5 @@ ADD swarm.sh $JENKINS_HOME/
 RUN chown -R jenkins:jenkins "$JENKINS_HOME"
 USER jenkins
 
-ENTRYPOINT [ "$JENKINS_HOME/swarm-bootssh.sh" ]
+ENTRYPOINT [ $JENKINS_HOME/swarm-bootssh.sh ]
 
