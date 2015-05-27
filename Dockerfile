@@ -9,7 +9,11 @@ ADD $SWARM_CLIENT_URL $SWARM_CLIENT_JAR
 ADD swarm.sh $JENKINS_HOME/
 
 RUN chown -R jenkins:jenkins "$JENKINS_HOME"
+
+ADD start.sh /start.sh
+RUN chmod a+rx /start.sh
+
 USER jenkins
 
-ENTRYPOINT [ $JENKINS_HOME/swarm-bootssh.sh ]
+ENTRYPOINT [ "/start.sh" ]
 
