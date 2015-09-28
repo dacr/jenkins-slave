@@ -21,9 +21,9 @@ if [ -z "$LABELS" ]; then
 fi
 
 if [ -n "$MASTER_URL" ] ; then 
-  java -jar $SWARM_CLIENT_JAR -fsroot $JENKINS_HOME -name "$SLAVE_NAME" -labels "$LABELS" -master $MASTER_URL $JENKINS_AUTH_OPTS "$@"
+  java -jar $SWARM_CLIENT_JAR -executors 2 -fsroot $JENKINS_HOME -name "$SLAVE_NAME" -labels "$LABELS" -master $MASTER_URL $JENKINS_AUTH_OPTS "$@"
 else
-  java -jar $SWARM_CLIENT_JAR -fsroot $JENKINS_HOME -name "$SLAVE_NAME" -labels "$LABELS" $JENKINS_AUTH_OPTS "$@"
+  java -jar $SWARM_CLIENT_JAR -executors 2 -fsroot $JENKINS_HOME -name "$SLAVE_NAME" -labels "$LABELS" $JENKINS_AUTH_OPTS "$@"
 fi
 
 
