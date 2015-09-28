@@ -16,10 +16,14 @@ if [ -n "$JENKINS_PASSWORD" ] ; then
   JENKINS_AUTH_OPTS=$JENKINS_AUTH_OPTS" -passwordEnvVariable JENKINS_PASSWORD"
 fi
 
+if [ -z "$LABELS" ]; then
+  LABELS="slave"
+fi
+
 if [ -n "$MASTER_URL" ] ; then 
-  java -jar $SWARM_CLIENT_JAR -fsroot $JENKINS_HOME -name "$SLAVE_NAME" -master $MASTER_URL $JENKINS_AUTH_OPTS "$@"
+  java -jar $SWARM_CLIENT_JAR -fsroot $JENKINS_HOME -name "$SLAVE_NAME" -labels "$LABELS" -master $MASTER_URL $JENKINS_AUTH_OPTS "$@"
 else
-  java -jar $SWARM_CLIENT_JAR -fsroot $JENKINS_HOME -name "$SLAVE_NAME" $JENKINS_AUTH_OPTS "$@"
+  java -jar $SWARM_CLIENT_JAR -fsroot $JENKINS_HOME -name "$SLAVE_NAME" -labels "$LABELS" $JENKINS_AUTH_OPTS "$@"
 fi
 
 
