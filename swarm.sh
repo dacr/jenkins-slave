@@ -20,6 +20,10 @@ if [ -z "$LABELS" ]; then
   LABELS="slave"
 fi
 
+if [ -z "$JENKINS_HOME" ] ; then
+  JENKINS_HOME="/var/jenkins_home"
+fi
+
 if [ -n "$MASTER_URL" ] ; then 
   java -jar $SWARM_CLIENT_JAR -executors 2 -fsroot $JENKINS_HOME -name "$SLAVE_NAME" -labels "$LABELS" -master $MASTER_URL $JENKINS_AUTH_OPTS "$@"
 else
